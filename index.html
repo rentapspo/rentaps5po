@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="sr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RentaPS5PO</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="logo" href="/">RENTA<span>PS5</span>PO</a><a href="/login">Admin</a></header>
+<main><section class="hero"><p class="tag">IGRAJ KAD GOD POŽELIŠ</p><h1>IZNAJMI <span>PLAYSTATION 5</span></h1><p>Odaberi paket i pošalji rezervaciju.</p><a class="btn" href="#rezervacija">REZERVIŠI SADA</a></section>
+<h2>CENOVNIK</h2><p class="muted">Cene su u dinarima (RSD).</p><div class="prices">
+<section class="card"><h3>PS5 + 1 DŽOJSTIK</h3>
+<div>1 dan <b>1.800 RSD</b></div><div>2 dana <b>3.000 RSD</b></div><div>3 dana <b>4.600 RSD</b></div><div>4 dana <b>5.900 RSD</b></div><div>5 dana <b>7.100 RSD</b></div><div>7 dana <b>9.500 RSD</b></div><div>14 dana <b>15.500 RSD</b></div><div>30 dana <b>20.000 RSD</b></div></section>
+<section class="card"><h3>PS5 + 2 DŽOJSTIKA</h3>
+<div>1 dan <b>2.000 RSD</b></div><div>2 dana <b>3.400 RSD</b></div><div>3 dana <b>5.200 RSD</b></div><div>4 dana <b>6.600 RSD</b></div><div>5 dana <b>8.000 RSD</b></div><div>7 dana <b>10.800 RSD</b></div><div>14 dana <b>18.000 RSD</b></div><div>30 dana <b>23.500 RSD</b></div></section></div>
+<section id="rezervacija" class="formbox"><h2>REZERVACIJA</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category,message in messages %}<p class="notice {{category}}">{{message}}</p>{% endfor %}{% endwith %}
+<form action="/reserve" method="post">
+<label>Ime i prezime<input name="name" required></label><label>Broj telefona<input name="phone" type="tel" required></label>
+<label>Trajanje<select name="days" required><option value="">Izaberi</option><option value="1">1 dan</option><option value="2">2 dana</option><option value="3">3 dana</option><option value="4">4 dana</option><option value="5">5 dana</option><option value="7">7 dana</option><option value="14">14 dana</option><option value="30">30 dana</option></select></label>
+<label>Broj džojstika<select name="controllers" required><option value="">Izaberi</option><option value="1">1 džojstik</option><option value="2">2 džojstika</option></select></label>
+<label>Datum početka<input name="start_date" type="date" required></label><label>Adresa / mesto dostave<input name="address" required></label>
+<label class="full">Napomena (opciono)<textarea name="note" rows="3"></textarea></label><button class="btn full">POŠALJI REZERVACIJU</button></form></section></main>
+<footer>Instagram: @rentaps5po</footer></body></html>
